@@ -61,15 +61,6 @@ BEGIN
 RETURN arr
 END createArray;
 
-PROCEDURE releaseArray(VAR arr: PointArray);
-BEGIN
-	WHILE arr.cnt > 0 DO
-		DEC(arr.cnt);
-		arr.arr[arr.cnt] := NIL
-	END;
-	arr := NIL
-END releaseArray;
-
 PROCEDURE printArray(arr: PointArray; baseX, baseY: INTEGER);
 VAR i, x, y, ix, iy: INTEGER;
 BEGIN
@@ -107,8 +98,7 @@ BEGIN
 				printArray(points, baseX, baseY)
 			ELSE
 				oop.sort(points.arr, points.cnt, cmp)
-			END;
-			releaseArray(points)
+			END
 		END
 	END
 END main;

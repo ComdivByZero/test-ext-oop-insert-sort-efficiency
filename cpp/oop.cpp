@@ -14,5 +14,5 @@ extern void oopSort(Element *arr[], int cnt, Comparator const *cmp) {
 			j--;
 		}
 		arr[j + 1] = a;
-	} 
+	}
 }
