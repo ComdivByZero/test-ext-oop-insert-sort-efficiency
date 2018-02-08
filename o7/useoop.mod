@@ -27,7 +27,7 @@ BEGIN
 RETURN p
 END NewPoint;
 
-PROCEDURE compare(c: oop.Comparator; a, b: oop.Element): INTEGER;
+PROCEDURE compare(c: oop.Base; a, b: oop.Element): INTEGER;
 	PROCEDURE cmp(c: PointComparator; a, b: IntPoint): INTEGER;
 	VAR ax, ay, bx, by: INTEGER;
 	BEGIN
@@ -103,6 +103,4 @@ BEGIN
 	END
 END main;
 
-BEGIN
-	main
 END useoop.

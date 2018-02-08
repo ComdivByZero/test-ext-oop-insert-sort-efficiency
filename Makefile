@@ -12,10 +12,9 @@ vpath s.% result
 
 result:
 	@mkdir -p result/src/oop
-	$(O7C)/result/o7c o7/oop.mod result/oop $(O7C)/singularity/definition
-	$(O7C)/result/o7c o7/useoop.mod result/useoop.c o7 $(O7C)/singularity/definition
-	cp go/oop.go result/src/oop/ && env GOPATH=`pwd`/result go build -o result/s.go go/useoop.go 
-	$(COMPILE).o7 result/*.c $(O7C)/singularity/implementation/*.c -Iresult -I$(O7C)/singularity/implementation
+	-rm -rf result/o7t
+	$(O7C)/result/o7c to-bin useoop.main result/s.o7 -infr $(O7C) -m o7 -cc "$(CC) $(OPTIM)" -t result/o7t
+	cp go/oop.go result/src/oop/ && env GOPATH=`pwd`/result go build -o result/s.go go/useoop.go
 	$(COMPILE).cpp cpp/*.cpp -lstdc++
 	if test `uname` = Darwin; then \
 		$(COBJC) $(LMAC); \

@@ -4,11 +4,13 @@ TYPE
 	RElement* = RECORD END;
 	Element* = POINTER TO RElement;
 
-	Comparator* = RECORD
-		compare: PROCEDURE(c: Comparator; a, b: Element): INTEGER
+	Base* = RECORD END;
+
+	Comparator* = RECORD(Base)
+		compare: PROCEDURE(c: Base; a, b: Element): INTEGER
 	END;
 
-	Compare* = PROCEDURE(c: Comparator; a, b: Element): INTEGER;
+	Compare* = PROCEDURE(c: Base; a, b: Element): INTEGER;
 
 PROCEDURE cmpInit*(VAR cmp: Comparator; compare: Compare);
 BEGIN
